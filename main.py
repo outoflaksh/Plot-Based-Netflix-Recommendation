@@ -32,16 +32,3 @@ def recommendations(title, cosine_sim = get_similarity_matrix()):
         recommended_movies.append((i, indices.loc[i]['title']))
         
     return recommended_movies
-
-
-dataset = pd.read_csv('./dataset/netflix_titles.csv')
-target = input("Enter movies/tv-show you want similar stuff for!: ")
-print("\n")
-recom = recommendations(target)
-if type(recom) == str:
-    print(recom)
-else:
-    for index, title in recom:
-        print(title + " (" + dataset.loc[index]['type'] + ")")
-        print(dataset.loc[index]['description'])
-        print('\n')

@@ -13,16 +13,20 @@ def get_similarity_matrix():
 
 def recommendations(title, cosine_sim = get_similarity_matrix()):
     indices = pd.read_csv('./dataset/indices.csv')
+
+    if title not in indices.values:
+        return "Movie or TV-show not found in database!"
+    
     recommended_movies = []
     # gettin the index of the movie that matches the title
-    idx = indices[indices == title].index[0]
+    idx = indices[indices['title'] == title].index[0]
 
     # creating a Series with the similarity scores in descending order
     score_series = pd.Series(cosine_sim[idx]).sort_values(ascending = False)
-
+    
     # getting the indexes of the 10 most similar movies
     top_10_indexes = list(score_series.iloc[1:11].index)
-    
+
     # populating the list with the titles of the best 10 matching movies
     for i in top_10_indexes:
         recommended_movies.append((i, indices.loc[i]['title']))
@@ -34,7 +38,10 @@ dataset = pd.read_csv('./dataset/netflix_titles.csv')
 target = input("Enter movies/tv-show you want similar stuff for!: ")
 print("\n")
 recom = recommendations(target)
-for index, title in recom:
-    print(title + " (" + dataset.loc[index]['listed_in'] + ")")
-    print(dataset.loc[index]['description'])
-    print('\n')
+if type(recom) == str:
+    print(recom)
+else:
+    for index, title in recom:
+        print(title + " (" + dataset.loc[index]['type'] + ")")
+        print(dataset.loc[index]['description'])
+        print('\n')

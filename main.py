@@ -1,19 +1,18 @@
-import numpy as np
+from numpy.core.numeric import indices
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-def get_similarity_matrix():
-    dataset = pd.read_csv('./dataset/processed.csv')
+from datasets import DATASET_PROCESSED, INDICES
+
+def get_similarity_matrix(dataset = DATASET_PROCESSED):
     count = TfidfVectorizer()
     count_matrix = count.fit_transform(dataset['bag_of_words'])
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
 
     return cosine_sim
 
-def recommendations(title, cosine_sim = get_similarity_matrix()):
-    indices = pd.read_csv('./dataset/indices.csv')
-
+def recommendations(title, cosine_sim = get_similarity_matrix(), indices = INDICES):
     if title not in indices.values:
         return "Movie or TV-show not found in database!"
     

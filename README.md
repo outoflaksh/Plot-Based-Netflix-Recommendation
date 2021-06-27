@@ -5,12 +5,12 @@
 Content recommendation is a machine learning task that involves recommending similar content (tv-shows, movies, books, etc) based on the user's taste or other similar users.
 
 
-* When recommending content based on other similar users, the techniques empployed come under *content-filtering*.
+* When recommending content based on other similar users, the techniques employed come under *content-filtering*.
 * Whereas, when recommending content based on some content that the user already enjoys, then it comes under *content-based recommendation*.
 
 ## About this repository
 
-This repository employs "content-based recommendation system" - in that - it aims to recommend content similar to the one user selects.
+This repository involves building a "content-based recommendation system" - that is - it aims to recommend content similar to the one the user selects.
 
 The similarity is judged on the basis of genre, plot, cast, and the director of the Netflix Movie or TV-show.
 
@@ -20,7 +20,7 @@ The dataset used for the code can be found [here](https://www.kaggle.com/shivamb
 
 ## Working
 
-First the dataset is cleaned. All the plot description texts are preprocessed: converting all to lowercase, removing punctuation, digits, stopwords and words are lemmatized. 
+First the dataset is cleaned. All the plot description texts are preprocessed: converting to lowercase, removing punctuation, digits, stopwords and words are lemmatized. 
 
 Then, the description are appended to the director, cast, and genre listings so that all the keywords are obtained for each content type in one sentence.
 

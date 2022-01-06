@@ -4,13 +4,20 @@ from datasets import DATASET_FULL
 
 app = Flask(__name__)
 
-@app.route("/recommend", methods = ["POST"])
-def recommend():
-    title = request.get_json()['title']
+
+@app.route("/recommend", methods=["GET"])
+def get_recommendation():
+    title = request.args.get("title")
     recom = recommendations(title)
-    
-    return jsonify({'message' : recom})
-    
+
+    return jsonify({'data': recom, "status": 200})
+
+
+@app.route("/titles", methods=["GET"])
+def read_all_movies():
+    movies = list(DATASET_FULL['title'])
+    return jsonify({"status": 200, "data": movies})
+
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

@@ -12,7 +12,7 @@ btn = st.button("Get recommendations")
 if btn:
 	st.write(f"Here are top 10 titles most similar to {title} based on its plot description, genre, cast, and directors: ")
 	for ind, recom in enumerate(recommendations(title)):
-		st.markdown(f"### {ind+1}. {recom[1]} ({df.loc[recom[0], 'duration']})")
-		st.markdown(f"*{df.loc[recom[0], 'description']}*")
+		st.markdown(f"### {ind+1}. {recom['title']} ({recom['duration']})")
+		st.markdown(f"*{recom['description']}*")
 
 st.markdown("Built with ❤️ by [Lakshya Malik](https://github.com/outoflaksh)")

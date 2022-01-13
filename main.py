@@ -15,7 +15,7 @@ def get_similarity_matrix(dataset=DATASET_PROCESSED):
 
 def recommendations(title, cosine_sim=get_similarity_matrix(), indices=INDICES, df=DATASET_FULL):
     if title not in indices.values:
-        raise Exception("Movie not found in the database")
+        return []
 
     recommended_movies = []
     # gettin the index of the movie that matches the title

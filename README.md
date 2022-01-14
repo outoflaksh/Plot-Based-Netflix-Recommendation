@@ -1,4 +1,4 @@
-# Plot-based Netflix Recommendation | [View Demo](https://share.streamlit.io/outoflaksh/plot-based-netflix-recommendation/app.py)
+# Plot-based Netflix Recommendation
 <p align = "center">
 <img src = "https://forthebadge.com/images/badges/made-with-python.svg">
 </p>
